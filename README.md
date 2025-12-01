@@ -6,7 +6,8 @@
 ### **Finite Difference Methods • MPI (Python) • OpenMP (C++) • High-Performance Computing**
 
 <div align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Black-Scholes_Formula.png" width="500">
+  <img width="1600" height="808" alt="image" src="https://github.com/user-attachments/assets/2fa25ee4-a0b0-40ac-a9a1-d211b1d0c92a" />
+
 </div>
 
 ---
