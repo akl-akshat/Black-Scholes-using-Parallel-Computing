@@ -1,257 +1,154 @@
 # Black-Scholes-using-Parallel-Computing
-🚀 Black–Scholes Option Pricing using Parallel Computing
-Finite Difference Methods • MPI (Python) • OpenMP (C++) • High-Performance Computing
-<div align="center"> <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Black-Scholes_Formula.png" width="500"> </div>
-📌 Overview
+Here is the formatted content, ready to be pasted directly into your `README.md` file. I have organized it with professional Markdown formatting, proper LaTeX math rendering, and a clean visual hierarchy.
 
-This project implements high-performance numerical solvers for the Black–Scholes Partial Differential Equation (PDE) using:
+-----
 
-Explicit Finite Difference Method
+# 🚀 Black–Scholes Option Pricing using Parallel Computing
 
-Parallel Distributed Computing with MPI (Python + mpi4py)
+### Finite Difference Methods • MPI (Python) • OpenMP (C++) • High-Performance Computing
 
-Parallel Shared-Memory Computing with OpenMP (C++)
+\<div align="center"\>
+\<img src="[https://upload.wikimedia.org/wikipedia/commons/7/70/Black-Scholes\_Formula.png](https://upload.wikimedia.org/wikipedia/commons/7/70/Black-Scholes_Formula.png)" width="500" alt="Black Scholes Formula"\>
+<br><br>
+\<img src="[https://img.shields.io/badge/Python-3.8%2B-blue?logo=python\&logoColor=white](https://www.google.com/search?q=https://img.shields.io/badge/Python-3.8%252B-blue%3Flogo%3Dpython%26logoColor%3Dwhite)" alt="Python"\>
+\<img src="[https://img.shields.io/badge/C%2B%2B-17-00599C?logo=c%2B%2B\&logoColor=white](https://www.google.com/search?q=https://img.shields.io/badge/C%252B%252B-17-00599C%3Flogo%3Dc%252B%252B%26logoColor%3Dwhite)" alt="C++"\>
+\<img src="[https://img.shields.io/badge/MPI-mpi4py-green](https://www.google.com/search?q=https://img.shields.io/badge/MPI-mpi4py-green)" alt="MPI"\>
+\<img src="[https://img.shields.io/badge/OpenMP-Parallel-red](https://www.google.com/search?q=https://img.shields.io/badge/OpenMP-Parallel-red)" alt="OpenMP"\>
+\</div\>
 
-The goal is to accelerate European option pricing using both distributed systems (MPI) and multicore CPUs (OpenMP) — comparing accuracy, stability, and computational efficiency.
+-----
 
-This repository demonstrates end-to-end scientific computing: mathematical modelling, numerical PDEs, parallelization, and performance benchmarking.
+## 📌 Overview
 
-✨ Key Features
-🔢 1. Finite Difference Solvers
+This project implements **high-performance numerical solvers** for the Black–Scholes Partial Differential Equation (PDE). The goal is to accelerate European option pricing using both distributed systems (MPI) and multicore CPUs (OpenMP), while comparing accuracy, stability, and computational efficiency against serial implementations.
 
-Explicit black–scholes PDE solver
+This repository demonstrates end-to-end scientific computing: **mathematical modelling, numerical PDEs, parallelization, and performance benchmarking.**
 
-Accurate enforcement of boundary & terminal conditions
+### 🛠 Technologies Used
 
-Numerical stability handling via explicit scheme constraints
+  * **Explicit Finite Difference Method** (FDM)
+  * **Parallel Distributed Computing** with MPI (Python + `mpi4py`)
+  * **Parallel Shared-Memory Computing** with OpenMP (C++)
 
-⚡ 2. MPI Parallel Solver (Python)
+-----
 
-BSE_Explicit_Parallel.py implements:
+## ✨ Key Features
 
-Domain decomposition across processes
+### 🔢 1. Finite Difference Solvers
 
-Ghost-cell communication with Sendrecv
+  * **Explicit Black–Scholes PDE solver:** A ground-up implementation of the explicit scheme.
+  * **Boundary Conditions:** Accurate enforcement of Dirichlet boundary conditions and terminal payoff.
+  * **Stability Control:** Numerical stability handling via strict timestep/spatial step constraints.
 
-Final solution reassembly via Gatherv
+### ⚡ 2. MPI Parallel Solver (Python)
 
-Scales efficiently across multiple CPU nodes
+\<div align="center"\>
+\<img src="[https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Mpi\_logo.svg/512px-Mpi\_logo.svg.png](https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Mpi_logo.svg/512px-Mpi_logo.svg.png)" width="100"/\>
+\</div\>
 
-<div align="center"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Mpi_logo.svg/512px-Mpi_logo.svg.png" width="120"/> </div>
-🧵 3. OpenMP Parallel Solver (C++)
+The `BSE_Explicit_Parallel.py` script implements distributed memory parallelization:
 
-BSE_ExplicitParallel_OpenMP.cpp features:
+  * **Domain Decomposition:** Splits the spatial grid across multiple processes.
+  * **Ghost-Cell Communication:** Uses `Sendrecv` to exchange boundary data between neighboring processors.
+  * **Result Aggregation:** Final solution reassembly using `Gatherv`.
+  * **Scalability:** Scales efficiently across multiple CPU nodes.
 
-Persistent OpenMP teams
+### 🧵 3. OpenMP Parallel Solver (C++)
 
-Parallelized spatial loops
+\<div align="center"\>
+\<img src="[https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/OpenMP\_logo.png/512px-OpenMP\_logo.png](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/OpenMP_logo.png/512px-OpenMP_logo.png)" width="150"/\>
+\</div\>
 
-Cache-friendly memory access
+The `BSE_ExplicitParallel_OpenMP.cpp` implementation focuses on shared-memory performance:
 
-Optional thread count via command-line arguments
+  * **Persistent Threads:** uses persistent OpenMP teams to reduce overhead.
+  * **Spatial Loop Parallelization:** `pragma omp for` directives handling the spatial grid updates.
+  * **Cache Optimization:** Memory access patterns optimized for CPU cache hits.
+  * **Configurable:** Thread count optional via command-line arguments.
 
-<div align="center"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/OpenMP_logo.png/512px-OpenMP_logo.png" width="180"/> </div>
-📊 4. Full Analysis & Presentation
+### 📊 4. Full Analysis & Presentation
 
-The repo includes:
-✔ 30+ slide research presentation
-✔ Comparison sheet with runtime & accuracy data
-✔ Graphs, insights, and mathematical derivations
+This repository is designed for educational and professional demonstration:
 
-These files highlight clear communication and presentation quality—great for interviews.
+  * ✔ **30+ Slide Research Presentation:** Detailed walkthrough of the math and code.
+  * ✔ **Comparison Sheet:** Exact runtime and accuracy data.
+  * ✔ **Graphs & Derivations:** Visual insights into the solution surface and error convergence.
 
-🔍 Core Concepts Implemented
-🧮 Black–Scholes PDE
-∂
-𝑉
-∂
-𝑡
-+
-1
-2
-𝜎
-2
-𝑆
-2
-∂
-2
-𝑉
-∂
-𝑆
-2
-+
-𝑟
-𝑆
-∂
-𝑉
-∂
-𝑆
-−
-𝑟
-𝑉
-=
-0
-∂t
-∂V
-	​
+-----
 
-+
-2
-1
-	​
+## 🔍 Core Concepts Implemented
 
-σ
-2
-S
-2
-∂S
-2
-∂
-2
-V
-	​
+### 🧮 Black–Scholes PDE
 
-+rS
-∂S
-∂V
-	​
+The governing equation for the price of an option over time:
 
-−rV=0
-🟦 Explicit Finite Difference Discretization
-𝑉
-𝑗
-𝑛
-−
-1
-=
-𝑎
-𝑗
-𝑉
-𝑗
-−
-1
-𝑛
-+
-𝑏
-𝑗
-𝑉
-𝑗
-𝑛
-+
-𝑐
-𝑗
-𝑉
-𝑗
-+
-1
-𝑛
-V
-j
-n−1
-	​
+$$
+\frac{\partial V}{\partial t} + \frac{1}{2}\sigma^2 S^2 \frac{\partial^2 V}{\partial S^2} + rS\frac{\partial V}{\partial S} - rV = 0
+$$
 
-=a
-j
-	​
+Where:
 
-V
-j−1
-n
-	​
+  * $V$: Option price
+  * $S$: Underlying asset price
+  * $\sigma$: Volatility
+  * $r$: Risk-free interest rate
 
-+b
-j
-	​
+### 🟦 Explicit Finite Difference Discretization
 
-V
-j
-n
-	​
+Using backward time, centered space (BTCS) discretization to solve for the previous time step $n-1$:
 
-+c
-j
-	​
+$$
+V^{n-1}_j = a_j V^n_{j-1} + b_j V^n_j + c_j V^n_{j+1}
+$$
 
-V
-j+1
-n
-	​
+### 📐 Boundary & Terminal Conditions
 
-📐 Boundary & Terminal Conditions
+**Terminal Condition (Call Option):**
 
-𝑉
-(
-𝑆
-,
-𝑇
-)
-=
-max
-⁡
-(
-𝑆
-−
-𝐾
-,
-0
-)
-V(S,T)=max(S−K,0)
+$$
+V(S, T) = \max(S-K, 0)
+$$
 
-𝑉
-(
-0
-,
-𝑡
-)
-=
-0
-V(0,t)=0
+**Boundary Conditions:**
 
-𝑉
-(
-𝑆
-max
-⁡
-,
-𝑡
-)
-=
-𝑆
-max
-⁡
-−
-𝐾
-𝑒
-−
-𝑟
-(
-𝑇
-−
-𝑡
-)
-V(S
-max
-	​
+1.  At $S=0$:
+    $$V(0, t) = 0$$
+2.  At $S_{max}$:
+    $$V(S_{\max}, t) = S_{\max} - Ke^{-r(T-t)}$$
 
-,t)=S
-max
-	​
+-----
 
-−Ke
-−r(T−t)
+## 🚀 Performance Highlights
 
-🚀 Performance Highlights
-🏎 Runtime Summary
-Method	Avg Runtime	Stability	Notes
-Explicit (Serial)	Slowest	Conditionally stable	Requires very small dt
-Implicit	Faster	Unconditionally stable	Solves tridiagonal system
-Crank–Nicolson	Fastest + Most Accurate	Unconditionally stable	2nd order accuracy
-MPI Explicit	Massive speedup	—	Distributed computation
-OpenMP Explicit	10× faster locally	—	Multicore parallelism
-📉 Accuracy Observations
+The following table summarizes the performance benchmarks included in the analysis:
 
-Crank–Nicolson nearly matches analytic values
+| Method | Avg Runtime | Stability | Notes |
+| :--- | :--- | :--- | :--- |
+| **Explicit (Serial)** | Slowest | Conditionally Stable | Requires very small $dt$ for stability ($dt \le dx^2/2$). |
+| **Implicit** | Faster | Unconditionally Stable | Solves a tridiagonal system; computationally heavier per step but allows larger $dt$. |
+| **Crank–Nicolson** | Fastest (Serial) | Unconditionally Stable | **Most Accurate.** 2nd-order accuracy in both time and space. |
+| **MPI Explicit** | **Massive Speedup** | Conditionally Stable | Distributed computation allows for massive grid sizes. |
+| **OpenMP Explicit** | **\~10× Faster** | Conditionally Stable | Excellent local speedup via multicore parallelism. |
 
-Explicit/Implicit slightly less accurate near strike
+### 📉 Accuracy Observations
 
-Parallel versions maintain identical accuracy
+  * **Crank–Nicolson** nearly matches analytic (exact) Black-Scholes values.
+  * **Explicit/Implicit** methods are slightly less accurate near the strike price $K$ due to discretization error.
+  * **Parallel versions** (MPI/OpenMP) maintain identical accuracy to the serial Explicit method (numerical precision preserved).
+
+-----
+
+## 👨‍💻 Usage
+
+**Running the MPI Version:**
+
+```bash
+mpiexec -n 4 python BSE_Explicit_Parallel.py
+```
+
+**Running the OpenMP Version:**
+
+```bash
+g++ -fopenmp BSE_ExplicitParallel_OpenMP.cpp -o solver
+./solver
+```
